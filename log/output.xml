@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.0.2 (Python 3.9.6 on darwin)" generated="20230609 12:50:45.762" rpa="false" schemaversion="3">
+<suite id="s1" name="Web Site Suit" source="/Users/Mikhail_Chizhov/PycharmProjects/pythonProject1/tests/web_site_suit.robot">
+<kw name="Open Browser" type="SETUP">
+<arg>https://www.demoblaze.com/</arg>
+<arg>Chrome</arg>
+<msg timestamp="20230609 12:50:45.780" level="FAIL">No keyword with name 'Open Browser' found.</msg>
+<status status="FAIL" starttime="20230609 12:50:45.780" endtime="20230609 12:50:45.780"/>
+</kw>
+<test id="s1-t1" name="User Login Test" line="7">
+<doc>Test user login functionality</doc>
+<tag>Login</tag>
+<status status="FAIL" starttime="20230609 12:50:45.780" endtime="20230609 12:50:45.781">Parent suite setup failed:
+No keyword with name 'Open Browser' found.</status>
+</test>
+<kw name="Close Browser" type="TEARDOWN">
+<msg timestamp="20230609 12:50:45.782" level="FAIL">No keyword with name 'Close Browser' found.</msg>
+<status status="FAIL" starttime="20230609 12:50:45.782" endtime="20230609 12:50:45.782">No keyword with name 'Close Browser' found.</status>
+</kw>
+<status status="FAIL" starttime="20230609 12:50:45.764" endtime="20230609 12:50:45.782">Suite setup failed:
+No keyword with name 'Open Browser' found.
+
+Also suite teardown failed:
+No keyword with name 'Close Browser' found.</status>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="0" fail="1" skip="0">Login</stat>
+</tag>
+<suite>
+<stat pass="0" fail="1" skip="0" id="s1" name="Web Site Suit">Web Site Suit</stat>
+</suite>
+</statistics>
+<errors>
+<msg timestamp="20230609 12:50:45.778" level="ERROR">Error in file '/Users/Mikhail_Chizhov/PycharmProjects/pythonProject1/tests/web_site_suit.robot' on line 2: Importing library 'SeleniumLibrary' failed: ModuleNotFoundError: No module named 'SeleniumLibrary'
+Traceback (most recent call last):
+  None
+PYTHONPATH:
+  /Users/Mikhail_Chizhov/Library/Application Support/JetBrains/PyCharmCE2022.3/plugins/robotframework-intellij/lib/robotframework_debug_adapter
+  /Users/Mikhail_Chizhov/PycharmProjects/pythonProject1
+  /Users/Mikhail_Chizhov/Library/Application Support/JetBrains/PyCharmCE2022.3/plugins/robotframework-intellij/lib
+  /Users/Mikhail_Chizhov/Library/Application Support/JetBrains/PyCharmCE2022.3/plugins/robotframework-intellij/lib/robotframework_ls/vendored
+  /Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python39.zip
+  /Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9
+  /Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/lib-dynload
+  /Users/Mikhail_Chizhov/Library/Python/3.9/lib/python/site-packages
+  /Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/site-packages</msg>
+</errors>
+</robot>
