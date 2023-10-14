@@ -1,5 +1,5 @@
 *** Settings ***
-Library           SeleniumLibrary
+Library           /Users/Mikhail_Chizhov/PycharmProjects/pythonProject1/my_new_env/lib/python3.9/site-packages/SeleniumLibrary
 Suite Setup       Open Browser  https://www.demoblaze.com/  Chrome
 Suite Teardown    Close Browser
 

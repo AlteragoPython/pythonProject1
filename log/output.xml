@@ -1,52 +1,210 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 6.0.2 (Python 3.9.6 on darwin)" generated="20230609 12:50:45.762" rpa="false" schemaversion="3">
+<robot generator="Robot 6.0.2 (Python 3.9.6 on darwin)" generated="20231011 22:21:09.439" rpa="false" schemaversion="3">
 <suite id="s1" name="Web Site Suit" source="/Users/Mikhail_Chizhov/PycharmProjects/pythonProject1/tests/web_site_suit.robot">
-<kw name="Open Browser" type="SETUP">
+<kw name="Open Browser" library="SeleniumLibrary" type="SETUP">
 <arg>https://www.demoblaze.com/</arg>
 <arg>Chrome</arg>
-<msg timestamp="20230609 12:50:45.780" level="FAIL">No keyword with name 'Open Browser' found.</msg>
-<status status="FAIL" starttime="20230609 12:50:45.780" endtime="20230609 12:50:45.780"/>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20231011 22:21:09.561" level="INFO">Opening browser 'Chrome' to base url 'https://www.demoblaze.com/'.</msg>
+<status status="PASS" starttime="20231011 22:21:09.561" endtime="20231011 22:21:14.659"/>
 </kw>
-<test id="s1-t1" name="User Login Test" line="7">
-<doc>Test user login functionality</doc>
-<tag>Login</tag>
-<status status="FAIL" starttime="20230609 12:50:45.780" endtime="20230609 12:50:45.781">Parent suite setup failed:
-No keyword with name 'Open Browser' found.</status>
+<test id="s1-t1" name="Product Selection Test" line="33">
+<kw name="Login">
+<var>${driver}</var>
+<doc>Log in with test credentials</doc>
+<kw name="Create Webdriver" library="SeleniumLibrary">
+<var>${driver}</var>
+<arg>Chrome</arg>
+<doc>Creates an instance of Selenium WebDriver.</doc>
+<msg timestamp="20231011 22:21:14.660" level="INFO">Creating an instance of the Chrome WebDriver.</msg>
+<msg timestamp="20231011 22:21:15.854" level="INFO">${driver} = 2</msg>
+<status status="PASS" starttime="20231011 22:21:14.660" endtime="20231011 22:21:15.854"/>
+</kw>
+<kw name="Go To" library="SeleniumLibrary">
+<arg>https://www.demoblaze.com/</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<msg timestamp="20231011 22:21:15.855" level="INFO">Opening url 'https://www.demoblaze.com/'</msg>
+<status status="PASS" starttime="20231011 22:21:15.855" endtime="20231011 22:21:17.235"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>id=login2</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20231011 22:21:17.236" level="INFO">Clicking element 'id=login2'.</msg>
+<status status="PASS" starttime="20231011 22:21:17.236" endtime="20231011 22:21:17.273"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>id=loginusername</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20231011 22:21:17.273" endtime="20231011 22:21:17.504"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>id=loginusername</arg>
+<arg>test_user0000</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231011 22:21:17.505" level="INFO">Typing text 'test_user0000' into text field 'id=loginusername'.</msg>
+<status status="PASS" starttime="20231011 22:21:17.504" endtime="20231011 22:21:17.609"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>id=loginpassword</arg>
+<arg>Test1234</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231011 22:21:17.610" level="INFO">Typing text 'Test1234' into text field 'id=loginpassword'.</msg>
+<status status="PASS" starttime="20231011 22:21:17.609" endtime="20231011 22:21:17.654"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>xpath=//*[@id='logInModal']/div/div/div[3]/button[2]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20231011 22:21:17.654" level="INFO">Clicking element 'xpath=//*[@id='logInModal']/div/div/div[3]/button[2]'.</msg>
+<status status="PASS" starttime="20231011 22:21:17.654" endtime="20231011 22:21:17.679"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>id=logout2</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20231011 22:21:17.679" endtime="20231011 22:21:18.769"/>
+</kw>
+<msg timestamp="20231011 22:21:18.769" level="INFO">${driver} = 2</msg>
+<status status="PASS" starttime="20231011 22:21:14.660" endtime="20231011 22:21:18.769"/>
+</kw>
+<kw name="Select Product With Highest Price">
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>link=Monitors</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20231011 22:21:18.770" level="INFO">Clicking element 'link=Monitors'.</msg>
+<status status="PASS" starttime="20231011 22:21:18.769" endtime="20231011 22:21:18.805"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20231011 22:21:20.808" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20231011 22:21:18.805" endtime="20231011 22:21:20.808"/>
+</kw>
+<kw name="Get WebElements" library="SeleniumLibrary">
+<var>${products}</var>
+<arg>css=div.card-block</arg>
+<doc>Returns a list of WebElement objects matching the ``locator``.</doc>
+<msg timestamp="20231011 22:21:20.822" level="INFO">${products} = [&lt;selenium.webdriver.remote.webelement.WebElement (session="c061350b552b53d45c095d7f840234dc", element="254FE225E7F4CB8EBCF4505A9D346D1B_element_107")&gt;, &lt;selenium.webdriver.remote.webelement.WebElemen...</msg>
+<status status="PASS" starttime="20231011 22:21:20.809" endtime="20231011 22:21:20.823"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${highest_price}</var>
+<arg>0</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20231011 22:21:20.823" level="INFO">${highest_price} = 0</msg>
+<status status="PASS" starttime="20231011 22:21:20.823" endtime="20231011 22:21:20.823"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${highest_price_product}</var>
+<arg>None</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20231011 22:21:20.824" level="INFO">${highest_price_product} = None</msg>
+<status status="PASS" starttime="20231011 22:21:20.823" endtime="20231011 22:21:20.824"/>
+</kw>
+<for flavor="IN">
+<var>${product}</var>
+<value>@{products}</value>
+<iter>
+<var name="${product}"/>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${price}</var>
+<arg>${product}.css=h5</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20231011 22:21:20.824" endtime="20231011 22:21:20.825"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${price}</var>
+<arg>float($price.replace('$', ''))</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="NOT RUN" starttime="20231011 22:21:20.825" endtime="20231011 22:21:20.825"/>
+</kw>
+<if>
+<branch type="IF" condition="${price} &gt; ${highest_price}">
+<kw name="Set Variable" library="BuiltIn">
+<var>${highest_price}</var>
+<arg>${price}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20231011 22:21:20.825" endtime="20231011 22:21:20.825"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${highest_price_product}</var>
+<arg>${product}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20231011 22:21:20.825" endtime="20231011 22:21:20.826"/>
+</kw>
+<status status="NOT RUN" starttime="20231011 22:21:20.825" endtime="20231011 22:21:20.826"/>
+</branch>
+<status status="NOT RUN" starttime="20231011 22:21:20.825" endtime="20231011 22:21:20.826"/>
+</if>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${highest_price_product}.css=h4</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20231011 22:21:20.826" endtime="20231011 22:21:20.826"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>css=h2</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="NOT RUN" starttime="20231011 22:21:20.826" endtime="20231011 22:21:20.826"/>
+</kw>
+<kw name="Element Should Be Visible" library="SeleniumLibrary">
+<arg>css=h4</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<status status="NOT RUN" starttime="20231011 22:21:20.826" endtime="20231011 22:21:20.826"/>
+</kw>
+<status status="NOT RUN" starttime="20231011 22:21:20.824" endtime="20231011 22:21:20.826"/>
+</iter>
+<msg timestamp="20231011 22:21:20.827" level="FAIL">FOR loop must have closing END.</msg>
+<status status="FAIL" starttime="20231011 22:21:20.824" endtime="20231011 22:21:20.827"/>
+</for>
+<status status="FAIL" starttime="20231011 22:21:18.769" endtime="20231011 22:21:20.827"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>link=Add to cart</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20231011 22:21:20.827" endtime="20231011 22:21:20.827"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>id=cartur</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20231011 22:21:20.828" endtime="20231011 22:21:20.828"/>
+</kw>
+<kw name="Get WebElements" library="SeleniumLibrary">
+<var>${cart_items}</var>
+<arg>css=div.table-responsive</arg>
+<doc>Returns a list of WebElement objects matching the ``locator``.</doc>
+<status status="NOT RUN" starttime="20231011 22:21:20.828" endtime="20231011 22:21:20.828"/>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${product_in_cart}</var>
+<arg>Should Be True</arg>
+<arg>any('${highest_price_product.text}' in '${item.text}' for item in ${cart_items})</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="NOT RUN" starttime="20231011 22:21:20.828" endtime="20231011 22:21:20.828"/>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<arg>${product_in_cart}</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="NOT RUN" starttime="20231011 22:21:20.828" endtime="20231011 22:21:20.828"/>
+</kw>
+<doc>Test product selection and adding to cart</doc>
+<tag>Product</tag>
+<status status="FAIL" starttime="20231011 22:21:14.659" endtime="20231011 22:21:20.829">FOR loop must have closing END.</status>
 </test>
-<kw name="Close Browser" type="TEARDOWN">
-<msg timestamp="20230609 12:50:45.782" level="FAIL">No keyword with name 'Close Browser' found.</msg>
-<status status="FAIL" starttime="20230609 12:50:45.782" endtime="20230609 12:50:45.782">No keyword with name 'Close Browser' found.</status>
+<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20231011 22:21:20.829" endtime="20231011 22:21:20.909"/>
 </kw>
-<status status="FAIL" starttime="20230609 12:50:45.764" endtime="20230609 12:50:45.782">Suite setup failed:
-No keyword with name 'Open Browser' found.
-
-Also suite teardown failed:
-No keyword with name 'Close Browser' found.</status>
+<status status="FAIL" starttime="20231011 22:21:09.440" endtime="20231011 22:21:20.909"/>
 </suite>
 <statistics>
 <total>
 <stat pass="0" fail="1" skip="0">All Tests</stat>
 </total>
 <tag>
-<stat pass="0" fail="1" skip="0">Login</stat>
+<stat pass="0" fail="1" skip="0">Product</stat>
 </tag>
 <suite>
 <stat pass="0" fail="1" skip="0" id="s1" name="Web Site Suit">Web Site Suit</stat>
 </suite>
 </statistics>
 <errors>
-<msg timestamp="20230609 12:50:45.778" level="ERROR">Error in file '/Users/Mikhail_Chizhov/PycharmProjects/pythonProject1/tests/web_site_suit.robot' on line 2: Importing library 'SeleniumLibrary' failed: ModuleNotFoundError: No module named 'SeleniumLibrary'
-Traceback (most recent call last):
-  None
-PYTHONPATH:
-  /Users/Mikhail_Chizhov/Library/Application Support/JetBrains/PyCharmCE2022.3/plugins/robotframework-intellij/lib/robotframework_debug_adapter
-  /Users/Mikhail_Chizhov/PycharmProjects/pythonProject1
-  /Users/Mikhail_Chizhov/Library/Application Support/JetBrains/PyCharmCE2022.3/plugins/robotframework-intellij/lib
-  /Users/Mikhail_Chizhov/Library/Application Support/JetBrains/PyCharmCE2022.3/plugins/robotframework-intellij/lib/robotframework_ls/vendored
-  /Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python39.zip
-  /Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9
-  /Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/lib-dynload
-  /Users/Mikhail_Chizhov/Library/Python/3.9/lib/python/site-packages
-  /Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/site-packages</msg>
 </errors>
 </robot>
