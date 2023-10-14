@@ -61,8 +61,11 @@ Product Selection Test
     Log    Clicked on div at index ${MAX_INDEX} with highest price of ${MAX_PRICE}
     Sleep  3s
 
-    # Step 4: Click on Cart button
+    # Click on Cart button
+    Click Element  Link=Add to cart
+    Sleep  5s
     Click Element  id=cartur
+    Sleep  3s
 
 
 
