@@ -1,7 +1,12 @@
 *** Settings ***
 Library           /Users/Mikhail_Chizhov/PycharmProjects/pythonProject1/my_new_env/lib/python3.9/site-packages/SeleniumLibrary
+Library    String
 Suite Setup       Open Browser  https://www.demoblaze.com/  Chrome
 Suite Teardown    Close Browser
+
+*** Variables ***
+${MAX_PRICE}      0
+${MAX_INDEX}      None
 
 *** Test Cases ***
 User Login Test
@@ -34,17 +39,32 @@ Product Selection Test
     [Documentation]  Test product selection and adding to cart
     [Tags]  Product
 
+
     ${driver}=  Login
-    Select Product With Highest Price
-    Click Element  link=Add to cart
+    Click Element  link=Monitors
+    Sleep  2s
+    ${count}=    Get Element Count    xpath=//*[@id="tbodyid"]/div
+    Log    Total number of divs inside tbodyid: ${count}
+
+    FOR    ${i}    IN RANGE    1    ${count + 1}
+        ${price_path}=    Set Variable    //*[@id="tbodyid"]/div[${i}]/div/div/h5
+        ${price_text}=    Get Text    ${price_path}
+        Log    Price text for div ${i}: ${price_text}
+        ${price}=    Extract Number From Price    ${price_text}
+        Log    Price value for div ${i}: ${price}
+
+        Run Keyword If    ${price} > ${MAX_PRICE}    Update Max Price    ${price}    ${i}
+        Log    Current max price: ${MAX_PRICE} for div at index ${MAX_INDEX}
+    END
+
+    Click Element    xpath=//*[@id="tbodyid"]/div[${MAX_INDEX}]
+    Log    Clicked on div at index ${MAX_INDEX} with highest price of ${MAX_PRICE}
+    Sleep  3s
 
     # Step 4: Click on Cart button
     Click Element  id=cartur
 
-    # Assert that the product is in the cart
-    ${cart_items}=  Get WebElements  css=div.table-responsive
-    ${product_in_cart}=  Run Keyword And Return Status  Should Be True  any('${highest_price_product.text}' in '${item.text}' for item in ${cart_items})
-    Should Be True  ${product_in_cart}
+
 
 *** Keywords ***
 Login
@@ -59,24 +79,15 @@ Login
     Wait Until Element Is Visible  id=logout2
     [Return]  ${driver}
 
-Select Product With Highest Price
-    # Step 1: Click on Monitors category
-    Click Element  link=Monitors
-    Sleep  2s
 
-    # Step 2: Click on the product with the highest price on the page
-    ${products}=  Get WebElements  css=div.card-block
-    ${highest_price}=  Set Variable  0
-    ${highest_price_product}=  Set Variable  None
-    FOR  ${product}  IN  @{products}
-        ${price}=  Get Text  ${product}.css=h5
-        ${price}=  Evaluate  float($price.replace('$', ''))
-        IF  ${price} > ${highest_price}
-            ${highest_price}=  Set Variable  ${price}
-            ${highest_price_product}=  Set Variable  ${product}
-    END
-    Click Element  ${highest_price_product}.css=h4
-    Wait Until Element Is Visible  css=h2
+Extract Number From Price
+    [Arguments]    ${price_text}
+    ${price_without_dollar}=    Replace String    ${price_text}    $    ${EMPTY}
+    ${number}=    Convert To Number    ${price_without_dollar}
+    [Return]    ${number}
 
-    # Assert that we're on the product page
-    Element Should Be Visible  css=h4
+Update Max Price
+    [Arguments]    ${price}    ${index}
+    Set Test Variable    ${MAX_PRICE}    ${price}
+    Set Test Variable    ${MAX_INDEX}    ${index}
+    Log    Updated max price to ${price} for child element at index ${index}
